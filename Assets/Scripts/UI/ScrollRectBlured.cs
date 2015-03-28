@@ -15,7 +15,6 @@ public class ScrollRectBlured : MonoBehaviour {
         scrollRect = this.GetComponent<ScrollRect>();
         startBlur.enabled = false;
         endBlur.enabled = false;
-
 	}
 	
 	void Update ()
@@ -24,7 +23,6 @@ public class ScrollRectBlured : MonoBehaviour {
 
         if (scrollRect.vertical) currentPos = scrollRect.verticalNormalizedPosition;
         else if (scrollRect.horizontal) currentPos = scrollRect.horizontalNormalizedPosition;
-        Debug.Log(currentPos);
 
         if (RoughlyEqual(currentPos, 1.0f) || currentPos > 1.0f)
         {
@@ -47,7 +45,6 @@ public class ScrollRectBlured : MonoBehaviour {
     public IEnumerator FadeTo(UnityEngine.UI.Image img, float value, float speed)
     {
         float alpha = img.color.a;
-        Debug.Log(alpha);
         for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / speed)
         {
             Color newColor = new Color(1, 1, 1, Mathf.Lerp(alpha, value, t));

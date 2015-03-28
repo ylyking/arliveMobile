@@ -23,6 +23,8 @@ public class TouchCamera : MonoBehaviour
     Vector3 rot = new Vector3(0, 0, 0);
 
     Camera thisCamera = null;
+    
+#if UNITY_ANDROID
 
     void Start()
     {
@@ -97,4 +99,6 @@ public class TouchCamera : MonoBehaviour
         transform.position += target.position;
         thisCamera.transform.LookAt(target.position);
     }
+
+#endif
 }

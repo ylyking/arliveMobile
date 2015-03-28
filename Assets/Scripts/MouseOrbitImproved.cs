@@ -24,6 +24,7 @@ public class MouseOrbitImproved : MonoBehaviour
     float velocityX = 0.0f;
     float velocityY = 0.0f;
 
+#if UNITY_EDITOR
     // Use this for initialization
     void Start()
     {
@@ -80,5 +81,6 @@ public class MouseOrbitImproved : MonoBehaviour
             angle -= 360F;
         return Mathf.Clamp(angle, min, max);
     }
+#endif
 }
 
