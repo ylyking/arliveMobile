@@ -107,6 +107,7 @@ public class ActionManager : MonoBehaviour {
 
     void ActivateUi()
     {
+        DisableGraphics();
         UiCreate.SetActive(true);
         switch(currentStep)
         {
