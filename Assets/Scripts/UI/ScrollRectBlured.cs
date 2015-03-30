@@ -8,13 +8,15 @@ public class ScrollRectBlured : MonoBehaviour {
 
     public UnityEngine.UI.Image startBlur;
     public UnityEngine.UI.Image endBlur;
-    float globalSpeed = 50.0f;
+    float globalSpeed = 0.1f;
 
 	void Start ()
 	{
         scrollRect = this.GetComponent<ScrollRect>();
-        startBlur.enabled = false;
-        endBlur.enabled = false;
+        startBlur.CrossFadeAlpha(0.0f, 0.0f, false);
+        endBlur.CrossFadeAlpha(0.0f, 0.0f, false);
+        //  startBlur.enabled = false;
+      //  endBlur.enabled = false;
 	}
 	
 	void Update ()
@@ -26,32 +28,30 @@ public class ScrollRectBlured : MonoBehaviour {
 
         if (RoughlyEqual(currentPos, 1.0f) || currentPos > 1.0f)
         {
-            startBlur.enabled = false;
-            endBlur.enabled = true;
+            //startBlur.enabled = false;
+           // endBlur.enabled = true;
+            startBlur.CrossFadeAlpha(0.0f, globalSpeed, false);
+            endBlur.CrossFadeAlpha(1.0f, globalSpeed, false);
+
         }
         else if (RoughlyEqual(currentPos, 0.0f) || currentPos < 0.0f)
         {
-            startBlur.enabled = true;
-            endBlur.enabled = false;
+            //startBlur.enabled = true;
+            //endBlur.enabled = false;
+            startBlur.CrossFadeAlpha(1.0f, globalSpeed, false);
+            endBlur.CrossFadeAlpha(0.0f, globalSpeed, false);
+
         }
         else
         {
-            startBlur.enabled = true;
-            endBlur.enabled = true;
+           // startBlur.enabled = true;
+            //endBlur.enabled = true;
+            startBlur.CrossFadeAlpha(1.0f, globalSpeed, false);
+            endBlur.CrossFadeAlpha(1.0f, globalSpeed, false);
+
         }
       
 	}
-
-    public IEnumerator FadeTo(UnityEngine.UI.Image img, float value, float speed)
-    {
-        float alpha = img.color.a;
-        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / speed)
-        {
-            Color newColor = new Color(1, 1, 1, Mathf.Lerp(alpha, value, t));
-            transform.renderer.material.color = newColor;
-            yield return null;
-        }
-    }
 
     static bool RoughlyEqual(float a, float b)
     {
