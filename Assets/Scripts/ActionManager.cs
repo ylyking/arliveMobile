@@ -41,6 +41,7 @@ public class ActionManager : MonoBehaviour {
     public SocialTriggers socialTrigger = SocialTriggers.NONE;
     public SelectedObject selectedObject = SelectedObject.NONE;
     public Action action = Action.NONE;
+    public Color lightColor;
 
     public Steps currentStep = Steps.START;
 
