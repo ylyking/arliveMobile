@@ -89,6 +89,7 @@ public class TouchCamera : MonoBehaviour
         {
             fai = -3.21f;
         }
+        if (zoomDistance <= 0.1f) zoomDistance = 0.1f;
 
         upVal.z = zoomDistance * Mathf.Cos(theta) * Mathf.Sin(fai + Mathf.PI / 2);
         upVal.x = zoomDistance * Mathf.Sin(theta) * Mathf.Sin(fai + Mathf.PI / 2);

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ActionManager : MonoBehaviour {
 
+    public static ActionManager am;
+
     public enum Steps
     {
         START,
@@ -50,6 +52,10 @@ public class ActionManager : MonoBehaviour {
 
     public GameObject[] UiSteps;
 
+    void Start()
+    {
+        am = this;
+    }
     public void StartAction(string type)
     {
        if(type == "service")
