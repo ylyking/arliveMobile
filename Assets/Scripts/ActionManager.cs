@@ -59,6 +59,7 @@ public class ActionManager : MonoBehaviour {
     }
     public void StartAction(string type)
     {
+        Debug.Log("type");
        if(type == "service")
        {
            currentStep = Steps.SERVICE;
@@ -67,7 +68,7 @@ public class ActionManager : MonoBehaviour {
        {
            currentStep = Steps.OBJECT;
        }
-       NextStep();
+       ActivateUi();
     }
 
     public void NextStep()
@@ -107,7 +108,7 @@ public class ActionManager : MonoBehaviour {
 
     void ActivateUi()
     {
-        DisableGraphics();
+        //DisableGraphics();
         UiCreate.SetActive(true);
         switch(currentStep)
         {
