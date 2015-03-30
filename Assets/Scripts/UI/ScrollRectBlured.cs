@@ -10,14 +10,34 @@ public class ScrollRectBlured : MonoBehaviour {
     public UnityEngine.UI.Image endBlur;
     float globalSpeed = 0.1f;
 
-	void Start ()
+	void Awake ()
 	{
         scrollRect = this.GetComponent<ScrollRect>();
-        startBlur.CrossFadeAlpha(0.0f, 0.0f, false);
-        endBlur.CrossFadeAlpha(0.0f, 0.0f, false);
-        //  startBlur.enabled = false;
-      //  endBlur.enabled = false;
-	}
+    }
+
+    void OnEnable()
+    {
+        float currentPos = 0.0f;
+
+        if (scrollRect.vertical) currentPos = scrollRect.verticalNormalizedPosition;
+        else if (scrollRect.horizontal) currentPos = scrollRect.horizontalNormalizedPosition;
+
+        if (RoughlyEqual(currentPos, 1.0f) || currentPos > 1.0f)
+        {
+            startBlur.CrossFadeAlpha(0.0f, 0.0f, false);
+            endBlur.CrossFadeAlpha(1.0f, 0.0f, false);
+        }
+        else if (RoughlyEqual(currentPos, 0.0f) || currentPos < 0.0f)
+        {
+            startBlur.CrossFadeAlpha(1.0f, 0.0f, false);
+            endBlur.CrossFadeAlpha(0.0f, 0.0f, false);
+        }
+        else
+        {
+            startBlur.CrossFadeAlpha(1.0f, 0.0f, false);
+            endBlur.CrossFadeAlpha(1.0f, 0.0f, false);
+        }
+    }
 	
 	void Update ()
 	{

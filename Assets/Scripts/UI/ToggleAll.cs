@@ -5,7 +5,13 @@ public class ToggleAll : MonoBehaviour {
 
     public GameObject[] allObjects;
 
-	
+    public int enableFirst = 10000;
+    void OnEnable()
+    {
+       SetActiveAll(false);
+        if (enableFirst < 100) allObjects[enableFirst].SetActive(true);
+    }
+
 	public void SetActiveAll (bool setA)
 	{
         for (int i = 0; i < allObjects.Length; i++)
