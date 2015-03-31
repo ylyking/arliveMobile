@@ -4,6 +4,7 @@ using System.Collections;
 public class ActionManager : MonoBehaviour {
 
     public static ActionManager am;
+    public NetworkView nView;
 
     public enum Steps
     {
@@ -62,6 +63,7 @@ public class ActionManager : MonoBehaviour {
     public void StartAction(string type)
     {
         Reset();
+        Done();
 
        if(type == "service")
        {
@@ -154,6 +156,19 @@ public class ActionManager : MonoBehaviour {
     {
         //do stuff
         //...
+        string argumentsURL = "type=";
+        if (socialTrigger == SocialTriggers.HASHTAG)
+        {
+            argumentsURL += "hashtag&string=" + socialString;
+        }
+        else if (socialTrigger == SocialTriggers.MENTION) argumentsURL += "mention";
+
+
+        argumentsURL += "hashtag&string=haha";
+
+
+        nView.RPC("SendStringData", RPCMode.All, argumentsURL);
+
 
         Reset();
     }
@@ -175,5 +190,6 @@ public class ActionManager : MonoBehaviour {
     {
         UiHeader.transform.parent.GetComponent<ToggleAll>().SetActiveAll(false);
     }
- 
+
+   
 }

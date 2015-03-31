@@ -4,12 +4,12 @@ using System.Collections;
 public class NetworkManager : MonoBehaviour {
 
     public bool setupServer = false;
-    public GameObject networkPopup;
+    public GameObject networkPopup = null;
 
 	void Start ()
     {
         #if UNITY_EDITOR
-        setupServer = true;
+      //  setupServer = true;
        #endif
 
         networkPopup.SetActive(false);
@@ -23,7 +23,7 @@ public class NetworkManager : MonoBehaviour {
         Network.InitializeServer(3, 25000, false);
 	}
 
-    void ConnectToServer()
+    public void ConnectToServer()
     {
         if (PlayerPrefs.HasKey("ipAdress"))
         {
