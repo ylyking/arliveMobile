@@ -50,6 +50,8 @@ public class ActionManager : MonoBehaviour {
     public GameObject UiNewService;
     public GameObject UiNewObject;
     public GameObject UiSelectAction;
+    public GameObject UiDetailedObject;
+    public GameObject UiSucessCreate;
 
     public GameObject[] UiSteps;
 
@@ -59,7 +61,8 @@ public class ActionManager : MonoBehaviour {
     }
     public void StartAction(string type)
     {
-        Debug.Log("type");
+        Reset();
+
        if(type == "service")
        {
            currentStep = Steps.SERVICE;
@@ -68,6 +71,7 @@ public class ActionManager : MonoBehaviour {
        {
            currentStep = Steps.OBJECT;
        }
+       stepCount++;
        ActivateUi();
     }
 
@@ -76,7 +80,7 @@ public class ActionManager : MonoBehaviour {
 
         if (stepCount == 3)
         {
-            Done();
+            currentStep = Steps.DONE;
         }
         else
         {
@@ -128,7 +132,10 @@ public class ActionManager : MonoBehaviour {
                 UiSelectAction.SetActive(true);
                 break;
             case Steps.DONE:
+                UiDetailedObject.SetActive(true);
+                UiSucessCreate.SetActive(true);
                 UiCreate.SetActive(false);
+                Done();
                 break;
         }
 
