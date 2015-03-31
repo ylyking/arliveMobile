@@ -43,6 +43,8 @@ public class ActionManager : MonoBehaviour {
     public SelectedObject selectedObject = SelectedObject.NONE;
     public Action action = Action.NONE;
     public Color lightColor;
+    public float blinkDuration = 0;
+    public float blinkRate = 0;
 
     public Steps currentStep = Steps.START;
 
@@ -63,7 +65,7 @@ public class ActionManager : MonoBehaviour {
     public void StartAction(string type)
     {
         Reset();
-        Done();
+       // Done();
 
        if(type == "service")
        {
@@ -154,21 +156,21 @@ public class ActionManager : MonoBehaviour {
     }
     void Done()
     {
-        //do stuff
-        //...
+        //Send URL
         string argumentsURL = "type=";
-        if (socialTrigger == SocialTriggers.HASHTAG)
-        {
-            argumentsURL += "hashtag&string=" + socialString;
-        }
+        
+        if (socialTrigger == SocialTriggers.HASHTAG)  argumentsURL += "hashtag&string=" + socialString;
         else if (socialTrigger == SocialTriggers.MENTION) argumentsURL += "mention";
-
-
-        argumentsURL += "hashtag&string=haha";
-
 
         nView.RPC("SendStringData", RPCMode.All, argumentsURL);
 
+        //Send Color
+        Vector3 colorVector = new Vector3(lightColor.r, lightColor.g, lightColor.b);
+        nView.RPC("SendColorData", RPCMode.All, colorVector);
+
+        //send blink
+        Vector3 blinkVector = new Vector3(blinkDuration, blinkRate, 0.0f);
+        nView.RPC("SendBlinkData", RPCMode.All, blinkVector);
 
         Reset();
     }
@@ -181,7 +183,7 @@ public class ActionManager : MonoBehaviour {
         selectedObject = SelectedObject.NONE;
         action = Action.NONE;
         currentStep = Steps.START;
-        
+
         ActivateUi();
         DisableGraphics();
     }
