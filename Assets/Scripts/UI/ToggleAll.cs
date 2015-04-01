@@ -9,7 +9,7 @@ public class ToggleAll : MonoBehaviour {
     void OnEnable()
     {
        SetActiveAll(false);
-        if (enableFirst < 100) allObjects[enableFirst].SetActive(true);
+       if (enableFirst < allObjects.Length) allObjects[enableFirst].SetActive(true);
     }
 
 	public void SetActiveAll (bool setA)
