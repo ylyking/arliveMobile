@@ -12,6 +12,8 @@ using UnityEngine;
 public class DefaultTrackableEventHandler : MonoBehaviour,
                                             ITrackableEventHandler
 {
+
+
     #region PRIVATE_MEMBER_VARIABLES
  
     private TrackableBehaviour mTrackableBehaviour;
@@ -19,8 +21,8 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
     #endregion // PRIVATE_MEMBER_VARIABLES
 
 
-
     #region UNTIY_MONOBEHAVIOUR_METHODS
+
     
     void Start()
     {
@@ -67,10 +69,16 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
     private void OnTrackingFound()
     {
         Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
+        Canvas[] canvasComponents = GetComponentsInChildren<Canvas>(true);
         Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 
         // Enable rendering:
         foreach (Renderer component in rendererComponents)
+        {
+            component.enabled = true;
+        }
+        // Enable rendering:
+        foreach (Canvas component in canvasComponents)
         {
             component.enabled = true;
         }
@@ -89,13 +97,18 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
     {
         Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
         Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
+        Canvas[] canvasComponents = GetComponentsInChildren<Canvas>(true);
 
         // Disable rendering:
         foreach (Renderer component in rendererComponents)
         {
             component.enabled = false;
         }
-
+        // Enable rendering:
+        foreach (Canvas component in canvasComponents)
+        {
+            component.enabled = false;
+        }
         // Disable colliders:
         foreach (Collider component in colliderComponents)
         {

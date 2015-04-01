@@ -31,6 +31,8 @@ public class MaskOutBehaviour : MaskOutAbstractBehaviour
                 this.renderer.sharedMaterials = maskMaterials;
             }
         }
+
+        this.GetComponent<MeshRenderer>().enabled = false;
     }
 
     #endregion // UNITY_MONOBEHAVIOUR_METHODS
