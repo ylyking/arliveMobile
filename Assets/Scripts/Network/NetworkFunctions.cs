@@ -20,4 +20,17 @@ public class NetworkFunctions : MonoBehaviour {
     {
         Debug.Log("Send blink data");
     }
+
+    [RPC]
+    void SendMoveType(string moveType)
+    {
+        Debug.Log("Send move type");
+    }
+
+    [RPC]
+    void SendMoveData(float moveData)
+    {
+        Debug.Log("Send move data");
+    }
+
 }

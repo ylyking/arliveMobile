@@ -46,6 +46,8 @@ public class ActionManager : MonoBehaviour {
     public float blinkDuration = 0;
     public float blinkRate = 0;
 
+    public string moveType = "none";
+    public float moveDuration = 0;
     public Steps currentStep = Steps.START;
 
     public GameObject UiCreate;
@@ -172,6 +174,10 @@ public class ActionManager : MonoBehaviour {
         Vector3 blinkVector = new Vector3(blinkDuration, blinkRate, 0.0f);
         nView.RPC("SendBlinkData", RPCMode.All, blinkVector);
 
+        //send Move Data
+        nView.RPC("SendMoveType", RPCMode.All, moveType);
+        nView.RPC("SendMoveData", RPCMode.All, moveDuration);
+        
         Reset();
     }
 
