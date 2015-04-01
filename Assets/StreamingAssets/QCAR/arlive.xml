@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="tumblr_lkfefoMT2e1qcxjs1" size="1.000000 1.333333" />
-    <ImageTarget name="rogue6" size="1.000000 1.333333" />
-    <ImageTarget name="14" size="1.000000 1.333333" />
-    <CylinderTarget name="arlive22" sideLength="9.500000"/>
-    <CylinderTarget name="arlive" sideLength="9.500000"/>
+    <CylinderTarget name="LampPsyche" sideLength="14.700000"/>
   </Tracking>
 </QCARConfig>
