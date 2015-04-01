@@ -189,6 +189,8 @@ public class ActionManager : MonoBehaviour {
         selectedObject = SelectedObject.NONE;
         action = Action.NONE;
         currentStep = Steps.START;
+        blinkDuration = 0;
+        blinkRate = 0;
 
         ActivateUi();
         DisableGraphics();
