@@ -54,14 +54,13 @@ public class NetworkFunctions : MonoBehaviour {
         Debug.Log("send real time color");
     }
 
-
     [RPC]
-    void ChangeSwitch()
+    void ChangeSwitch(bool t)
     {
         //on inverse
         ActionManager.am.lightOn = !ActionManager.am.lightOn;
         RealTimeView.rtv.ToggleGraphics();
-        Debug.Log("Receive Chnage Switch");
+        Debug.Log("Receive Change Switch");
     }
 
     [RPC]

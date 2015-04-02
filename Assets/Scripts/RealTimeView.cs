@@ -51,10 +51,10 @@ public class RealTimeView : MonoBehaviour {
         nView.RPC("ColorRealTime", RPCMode.All, color);
     }
 
-    public void ChangeSwitch()
+    public void ChangeSwitchRTV()
     {
         ToggleGraphics();
-        nView.RPC("ChangeSwitch", RPCMode.All);
+        nView.RPC("ChangeSwitch", RPCMode.All, true);
     }
 
     public void ToggleGraphics()

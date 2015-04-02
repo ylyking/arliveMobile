@@ -11,9 +11,12 @@ public class NotifyToggleSwitchLight : MonoBehaviour
         this.GetComponent<Toggle>().onValueChanged.AddListener((value) => Change(value));
     }
 
-    public void Change(bool isOn)
+    public void Change(bool newVal)
     {
-        RealTimeView.rtv.ChangeSwitch();
+        if (newVal != ActionManager.am.lightOn)
+        {
+            RealTimeView.rtv.ChangeSwitchRTV();
+        }
     }
 
 }
