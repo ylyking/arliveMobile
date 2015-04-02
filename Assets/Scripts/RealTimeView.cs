@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class RealTimeView : MonoBehaviour {
@@ -9,6 +10,9 @@ public class RealTimeView : MonoBehaviour {
     public static RealTimeView rtv;
     public string currentDirection = "";
     public bool directionActive = false;
+
+    public Toggle onToggle;
+    public Toggle offToggle;
 
     void Awake() {
         rtv = this;
@@ -45,5 +49,31 @@ public class RealTimeView : MonoBehaviour {
     {
         // 0 = false, 1 = true
         nView.RPC("ColorRealTime", RPCMode.All, color);
+    }
+
+    public void ChangeSwitch()
+    {
+        ToggleGraphics();
+        nView.RPC("ChangeSwitch", RPCMode.All);
+    }
+
+    public void ToggleGraphics()
+    {
+        StartCoroutine("ChangeToggleGraphics");
+
+    }
+     IEnumerator ChangeToggleGraphics()
+    {
+        yield return new WaitForSeconds(0.2f);
+        if (ActionManager.am.lightOn)
+        {
+            onToggle.isOn = true;
+            offToggle.isOn = false;
+        }
+        else if (!ActionManager.am.lightOn) {
+            onToggle.isOn = false;
+            offToggle.isOn = true;
+        }
+       
     }
 }

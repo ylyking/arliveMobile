@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="marker2" size="15.000000 21.750000" />
     <CylinderTarget name="LampPsyche" sideLength="14.700000"/>
   </Tracking>
 </QCARConfig>

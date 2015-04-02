@@ -55,4 +55,19 @@ public class NetworkFunctions : MonoBehaviour {
     }
 
 
+    [RPC]
+    void ChangeSwitch()
+    {
+        //on inverse
+        ActionManager.am.lightOn = !ActionManager.am.lightOn;
+        RealTimeView.rtv.ToggleGraphics();
+        Debug.Log("Receive Chnage Switch");
+    }
+
+    [RPC]
+    void SetLight(bool isOn)
+    {
+        ActionManager.am.lightOn = isOn;
+        RealTimeView.rtv.ToggleGraphics();
+    }
 }

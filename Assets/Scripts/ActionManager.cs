@@ -60,12 +60,13 @@ public class ActionManager : MonoBehaviour {
 
     public GameObject[] UiSteps;
 
-
+    public bool lightOn = true;
 
     void Start()
     {
         am = this;
     }
+
     public void StartAction(string type)
     {
         Reset();
@@ -158,6 +159,8 @@ public class ActionManager : MonoBehaviour {
             else UiSteps[i].SetActive(false);
         }
     }
+
+
     void Done()
     {
         //Send URL
