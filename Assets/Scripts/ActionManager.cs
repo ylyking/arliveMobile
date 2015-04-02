@@ -60,6 +60,8 @@ public class ActionManager : MonoBehaviour {
 
     public GameObject[] UiSteps;
 
+
+
     void Start()
     {
         am = this;

@@ -33,4 +33,26 @@ public class NetworkFunctions : MonoBehaviour {
         Debug.Log("Send move data");
     }
 
+
+
+    ///RealTimeView
+    [RPC]
+    void SetRealTime(int isActive)
+    {
+        Debug.Log("Send real time state");
+    }
+
+    [RPC]
+    void MoveRealTime(string direction)
+    {
+        Debug.Log("send real time direction");
+    }
+
+    [RPC]
+    void ColorRealTime(Vector3 color)
+    {
+        Debug.Log("send real time color");
+    }
+
+
 }

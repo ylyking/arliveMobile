@@ -6,9 +6,13 @@ public class ToggleAll : MonoBehaviour {
     public GameObject[] allObjects;
 
     public int enableFirst = 10000;
+    public bool defaultEnabled = true;
     void OnEnable()
     {
-       SetActiveAll(false);
+        if (defaultEnabled)
+        {
+            SetActiveAll(false);
+        }
        if (enableFirst < allObjects.Length) allObjects[enableFirst].SetActive(true);
     }
 
